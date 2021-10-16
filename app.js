@@ -56,7 +56,7 @@ const createEngineer = (name, title, id, email) => {
 
   prompt([
     {
-    type: 'input'
+    type: 'input',
     name: 'engineerLink',
     message: `Enter ${name}'s GitHub username:`
     }
@@ -88,7 +88,7 @@ const createManager = (name, role, id, email) => {
 
   prompt([
     {
-      type: 'input'
+      type: 'input',
       name: 'managerNumber',
       message: `Enter ${name}'s office #:`
     }
@@ -120,17 +120,17 @@ const createNewEmployee = employeeTitle => {
 
   prompt([
     {
-      type: 'input'
+      type: 'input',
       name: 'employeeName',
       message: `Enter new employee's name:`
     },
     {
-      type: 'input'
+      type: 'input',
       name: 'employeeID',
       message: `Enter new employee's ID #:`
     },
     {
-      type: 'input'
+      type: 'input',
       name: 'employeeEmail',
       message: `Enter new employee's e-mail:`
     }
@@ -141,20 +141,20 @@ const createNewEmployee = employeeTitle => {
           createManager(employeeName, employeeTitle, employeeID, employeeEmail)
           break
         case 'Engineer':
-          createManager(employeeName, employeeTitle, employeeID, employeeEmail)
+          createEngineer(employeeName, employeeTitle, employeeID, employeeEmail)
           break
         case 'Intern':
-          createManager(employeeName, employeeTitle, employeeID, employeeEmail)
+          createIntern(employeeName, employeeTitle, employeeID, employeeEmail)
           break
           default:
-            console.log('Program termintaing')
+            console.log('Program termintating')
             process.exit()
       }
     })
     .catch(error => console.log(error))
 }
 
-const employeeChoices = ['Manger', 'Engineer', 'Intern', 'Exit']
+const employeeChoices = ['Manager', 'Engineer', 'Intern', 'Exit']
 
 const mainMenu = () => {
    
@@ -166,7 +166,7 @@ const mainMenu = () => {
       choices: employeeChoices
     }
   ])
-  .then(({ menuChoice }) => !== 'Exit' ? createNewEmployee(menuChoice) : console.log('Goodbye!'))
+  .then(({ menuChoice }) => menuChoice !== 'Exit' ? createNewEmployee(menuChoice) : console.log('Goodbye!'))
   .catch(error => console.log(error)) 
 
 }
