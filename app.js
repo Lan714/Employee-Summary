@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const PUBLIC_DIR = path.resolve(__dirname, "public");
-const publicPath = path.join(PUBLIC_DIR, "team.html")
+const publicPath = path.join(PUBLIC_DIR, "./Public/team.html")
 
 const render = require("./lib/htmlRender")
 
@@ -14,7 +14,7 @@ let employeeInformation = []
 
 const renderEmployees = () => {
 
-  fs.writeFile('./public/team.html', render(employeeInformation), error => {
+  fs.writeFile('./Public/team.html', render(employeeInformation), error => {
     if (error) { console.log(error) }
   })
 }
