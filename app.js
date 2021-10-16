@@ -5,8 +5,8 @@ const { prompt } = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 
-const OUTPUT_DIR = path.resolve(__dirname, "output");
-const outputPath = path.join(OUTPUT_DIR, "team.html")
+const PUBLIC_DIR = path.resolve(__dirname, "public");
+const publicPath = path.join(PUBLIC_DIR, "team.html")
 
 const render = require("./lib/htmlRender")
 
@@ -14,7 +14,7 @@ let employeeInformation = []
 
 const renderEmployees = () => {
 
-  fs.writeFile('./output/team.html', render(employeeInformation), error => {
+  fs.writeFile('./public/team.html', render(employeeInformation), error => {
     if (error) { console.log(error) }
   })
 }
@@ -99,7 +99,7 @@ const createManager = (name, role, id, email) => {
       manager.setRole(role)
       manager.setID(id)
       manager.setEmail(email)
-      manager.setGithub(managerNumber)
+      manager.setOfficeNumber(managerNumber)
 
       employeeInformation.push(manager)
 
